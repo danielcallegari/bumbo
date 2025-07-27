@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 320px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      margin: 0;
+    }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .logo {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(45deg, #ffd700, #ffed4e);
+      border-radius: 50%;
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #333;
+      font-size: 12px;
+    }
+    
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      flex: 1;
+    }
+    
+    .gear-icon {
+      font-size: 16px;
+      opacity: 0.6;
+      margin-left: 8px;
+    }
+    
+    .section {
+      margin-bottom: 16px;
+    }
+    
+    .section-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    
+    .toggle {
+      position: relative;
+      width: 50px;
+      height: 24px;
+      background: #ccc;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .toggle.active {
+      background: #4CAF50;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .toggle.active .toggle-slider {
+      transform: translateX(26px);
+    }
+    
+    .form-group {
+      margin-bottom: 12px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    input[type="url"], select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    
+    input[type="color"] {
+      width: 50px;
+      height: 30px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .color-preview {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    
+    .button {
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+      margin-top: 8px;
+    }
+    
+    .button:hover {
+      background: #005a9e;
+    }
+    
+    .button.secondary {
+      background: #f5f5f5;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+    
+    .button.secondary:hover {
+      background: #e8e8e8;
+    }
+    
+    .status {
+      padding: 8px;
+      border-radius: 4px;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+    
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .status.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+    
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .terms-info {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">B</div>
+    <div class="title">Bumbo Settings</div>
+    <div class="gear-icon">⚙️</div>
+  </div>
+  
+  <div class="section">
+    <div class="toggle-container">
+      <span class="section-title">Enable Bumbo</span>
+      <div class="toggle" id="enableToggle">
+        <div class="toggle-slider"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">Highlight Style</div>
+    
+    <div class="form-group">
+      <label for="highlightColor">Highlight Color:</label>
+      <div style="display: flex; align-items: center;">
+        <input type="color" id="highlightColor" value="#8B5CF6">
+        <div class="color-preview" id="colorPreview"></div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="highlightEffect">Highlight Effect:</label>
+      <select id="highlightEffect">
+        <option value="background">Background Color</option>
+        <option value="underline">Underline</option>
+        <option value="border">Border</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">Terms Source</div>
+    
+    <div class="form-group">
+      <label for="termsUrl">JSON File URL:</label>
+      <input type="url" id="termsUrl" placeholder="https://example.com/terms.json">
+      <div class="terms-info">Leave empty to use the default sample terms</div>
+    </div>
+    
+    <button class="button secondary" id="testUrl">Test URL</button>
+    <button class="button secondary" id="resetToSample">Use Sample Terms</button>
+  </div>
+  
+  <button class="button" id="saveSettings">Save Settings</button>
+  
+  <div id="status" class="status" style="display: none;"></div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bumbo Extension Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        h1, h2 { color: #333; }
+        .dynamic-content {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        button {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #005a9e; }
+    </style>
+</head>
+<body>
+    <h1>Bumbo Extension Test Page</h1>
+    <p>This page contains various terms that should be highlighted by the Bumbo extension.</p>
+
+    <div class="section">
+        <h2>Programming Languages</h2>
+        <p>Modern web development relies heavily on <strong>JavaScript</strong> for client-side functionality. Many developers also use <strong>Python</strong> for backend services and data analysis. The combination of HTML, CSS, and JavaScript forms the foundation of web development.</p>
+        <p>Popular frameworks like React have revolutionized how we build user interfaces. Node.js has enabled JavaScript to run on servers, creating full-stack JavaScript applications.</p>
+    </div>
+
+    <div class="section">
+        <h2>Web Technologies</h2>
+        <p>Every webpage is built with HTML as its structure. CSS provides the styling and layout capabilities. Modern websites often consume data through APIs and store information in databases.</p>
+        <p>Understanding algorithms is crucial for solving complex programming problems efficiently.</p>
+    </div>
+
+    <div class="section">
+        <h2>Emerging Technologies</h2>
+        <p>Machine learning and artificial intelligence are transforming industries. Cloud computing has made scalable applications more accessible than ever. With the rise of digital threats, cybersecurity has become a critical concern for all organizations.</p>
+    </div>
+
+    <div class="section">
+        <h2>Dynamic Content Test</h2>
+        <p>Click the button below to add content dynamically. The Bumbo extension should automatically detect and highlight new terms.</p>
+        <button onclick="addDynamicContent()">Add Dynamic Content</button>
+        <div id="dynamic-area"></div>
+    </div>
+
+    <div class="section">
+        <h2>Case Sensitivity Test</h2>
+        <p>Testing case insensitive matching: JAVASCRIPT, Javascript, javascript, PyThOn, python, PYTHON should all be highlighted.</p>
+        <p>Mixed case: Api, API, api, Html, HTML, html, Css, CSS, css</p>
+    </div>
+
+    <div class="section">
+        <h2>Multiple Occurrences</h2>
+        <p>JavaScript appears multiple times in this paragraph. JavaScript is used for frontend development. JavaScript can also run on servers with Node.js. Learning JavaScript is essential for web developers.</p>
+    </div>
+
+    <script>
+        let dynamicCounter = 0;
+        
+        function addDynamicContent() {
+            dynamicCounter++;
+            const dynamicArea = document.getElementById('dynamic-area');
+            const newContent = document.createElement('div');
+            newContent.className = 'dynamic-content';
+            newContent.innerHTML = `
+                <h3>Dynamic Content ${dynamicCounter}</h3>
+                <p>This content was added dynamically and contains terms like Python, JavaScript, 
+                machine learning, and API that should be automatically highlighted by Bumbo.</p>
+                <p>Testing algorithm detection and database terminology in dynamic content.</p>
+            `;
+            dynamicArea.appendChild(newContent);
+        }
+
+        // Simulate content updates
+        setTimeout(() => {
+            const updateArea = document.createElement('div');
+            updateArea.innerHTML = '<p><em>Auto-updated content:</em> This paragraph about React and Node.js was added automatically after page load.</p>';
+            const lastSection = document.querySelector('.section:last-of-type');
+            if (lastSection) {
+                lastSection.appendChild(updateArea);
+            } else {
+                console.error('Could not find last section to append content');
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+/* Bumbo Content Script Styles */
+
+.bumbo-highlight {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bumbo-highlight:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.bumbo-popup {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+  max-width: 300px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  z-index: 10000;
+  animation: bumboPopupFadeIn 0.2s ease-out;
+}
+
+@keyframes bumboPopupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bumbo-popup-header {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bumbo-popup-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.bumbo-popup-close:hover {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.bumbo-popup-description {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.bumbo-popup-link {
+  margin-top: 8px;
+}
+
+.bumbo-popup-link a {
+  color: #007acc;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.bumbo-popup-link a:hover {
+  text-decoration: underline;
+}
+
+.bumbo-popup-attribute {
+  margin-top: 6px;
+  color: #555;
+  font-size: 13px;
+}
+
+.bumbo-popup-attribute strong {
+  color: #333;
+}
+
+.bumbo-popup-footer {
+  margin: 10px -12px -12px -12px;
+  padding: 6px 12px;
+  background-color: #84bef7;
+  border-top: 1px solid #e9ecef;
+  border-radius: 0 0 8px 8px;
+  font-size: 10px;
+  color: #ffffff;
+  text-align: center;
+  font-style: italic;
+}

@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Bumbo",
+  "version": "1.0.0",
+  "description": "Enhances web pages by providing additional information on a list of terms",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Bumbo Settings"
+  },
+
+
+  "web_accessible_resources": [
+    {
+      "resources": ["sample-terms.json"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
