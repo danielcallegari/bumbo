@@ -1,5 +1,12 @@
 [
   {
+    "term": "Bumbo",
+    "description": "A browser extension for Chrome. Bumbo enhances a web page by providing additional information on a list of terms.",
+    "url": "https://github.com/danielcallegari/bumbo",
+    "category": "Browser Extension",
+    "author": "Daniel Callegari"
+  },
+  {
     "term": "JavaScript",
     "description": "A high-level, interpreted programming language that conforms to the ECMAScript specification. JavaScript is a core technology of the World Wide Web, alongside HTML and CSS.",
     "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
